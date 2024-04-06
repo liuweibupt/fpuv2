@@ -48,6 +48,7 @@ object FPUCtrlFac{
 class FPUInput(len: Int, ctrlGen: Data = EmptyFPUCtrl(), topInput: Boolean = false) extends Bundle {
   val op = if(topInput) UInt(6.W) else UInt(3.W)
   val a, b, c = UInt(len.W)
+
   val rm = UInt(3.W)
   //val ctrl = if (hasCtrl) new FPUCtrl else new FPUCtrl(false)
   val ctrl = FPUCtrlFac(ctrlGen)

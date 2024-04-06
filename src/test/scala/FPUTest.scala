@@ -23,8 +23,8 @@ class FPUTest extends AnyFlatSpec with ChiselScalatestTester {
     var count = 0
     def reset = { count = 0 }
     def apply(a: AnyVal, b: AnyVal, c: AnyVal, op: UInt, rm: UInt = RTZ): FPUInput = {
-      count = (count + 1) % 32
-      (new FPUInput(32, new TestFPUCtrl(depthWarp, softThread), true)).Lit(
+      count = (count + 1) % len
+      (new FPUInput(len, new TestFPUCtrl(depthWarp, softThread), true)).Lit(
         _.a -> toUInt(a).U,
         _.b -> toUInt(b).U,
         _.c -> toUInt(c).U,

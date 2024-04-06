@@ -13,8 +13,8 @@ class ScalarFPU(expWidth: Int, precision: Int, ctrlGen: Data = EmptyFPUCtrl()) e
     val select = Output(UInt(3.W))
   })
   val subModules = Array[FPUSubModule](
-    Module(new FMA(expWidth, precision, ctrlGen)),
-    Module(new FCMP(expWidth, precision, ctrlGen)),
+    Module(new FMA(expWidth, precision, ctrlGen)), //乘加混合运算
+    Module(new FCMP(expWidth, precision, ctrlGen)),// 浮点数比较操作
     Module(new FPMV(expWidth, precision, ctrlGen)),
     Module(new FPToInt(ctrlGen)),
     Module(new IntToFP(ctrlGen))
